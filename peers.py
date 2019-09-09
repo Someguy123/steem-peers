@@ -132,24 +132,32 @@ for ip in ip_list:
 
 
 
-log.info('----------------------')
+print('----------------------')
+print()
+
 for ip, ipd in ip_data.items():
     print("{ip:<25} {country:<30} {asn:<35} {rdns}".format(ip=ip, **ipd))
+print()
 
-log.info('----------------------')
+print('----------------------')
 
 log.info('Total IPs: %s', len(ip_list))
 sorted_counts = sorted(counts.items(), key=operator.itemgetter(1), reverse=True)
 
 log.info('Printing sorted ASNs')
+
+print()
 for x,y in sorted_counts:
     print('{}\t{}'.format(x,y))
+print()
 
-log.info('----------------------')
+print('----------------------')
 
 log.info('Printing sorted countries')
+print()
 sorted_countries = sorted(countries.items(), key=operator.itemgetter(1), reverse=True)
 for x,y in sorted_countries:
     print('{}\t{}'.format(x,y))
+print()
 
-log.info('----------------------')
+print('----------------------')
