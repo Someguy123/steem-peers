@@ -79,9 +79,9 @@ for line in data:
         # Remove the port number, and support IPv6 addresses by first splitting by :
         # then combining by : and excluding the last item (the port)
         ip = ':'.join(ip_port.split(':')[:-1])
-        # Ignore Docker LAN IPs and wildcard 0.0.0.0
+        # Ignore Docker LAN IPs and various local bind addresses
         if ip[0:7] == '172.17.': continue
-        if ip == '0.0.0.0': continue
+        if ip in ['0.0.0.0', '127.0.0.1', '::', '::1']: continue
         ip_list.append(ip)
         ip_data[ip] = dict(country="unknown", asn="unknown")
     except:
