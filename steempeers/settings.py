@@ -1,6 +1,9 @@
+from dotenv import load_dotenv
 from privex.helpers import env_bool
 from os import getenv as env, path, getcwd
 from os.path import dirname, abspath
+
+load_dotenv()
 
 BASE_DIR = dirname(abspath(__file__))
 

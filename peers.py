@@ -22,14 +22,12 @@
 ######################################
 
 import sys
-from dotenv import load_dotenv
 from privex.helpers import ErrHelpParser
 from os import path
 from steempeers import settings
 from steempeers.core import set_log_level, detect_geoip
 from steempeers.scanner import PeerScanner
 
-load_dotenv()
 
 parser = ErrHelpParser(description='Linux Peer Scanner (C) 2020 Someguy123')
 
