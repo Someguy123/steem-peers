@@ -1,4 +1,4 @@
 privex-loghelper>=1.0.4
-privex-helpers>=1.2.1
+privex-helpers>=2.10
 python-dotenv>=0.10.1
 geoip2>=2.9.0

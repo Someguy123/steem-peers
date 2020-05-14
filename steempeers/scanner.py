@@ -1,6 +1,7 @@
 import operator
 import shlex
 import subprocess
+import os
 from socket import gethostbyaddr, herror
 from typing import Optional, List, Tuple, Generator
 
@@ -32,6 +33,10 @@ class PeerScanner:
             with subprocess.Popen(cmd, stdout=subprocess.PIPE) as proc:
                 pid = proc.stdout.read().decode('utf-8')
             log.debug('steemd docker pid is: %s', pid)
+            uid = os.geteuid()
+            if uid != 0:
+                log.debug("Current UID '%s' is not 0 (root). Calling nsenter using sudo -n ... ", uid)
+                return shlex.split("sudo -n nsenter -t " + pid + " -n netstat -avWetn")
             return shlex.split("nsenter -t " + pid + " -n netstat -avWetn")
         # Otherwise, just a plain netstat.
         return shlex.split("netstat -avWetn")
